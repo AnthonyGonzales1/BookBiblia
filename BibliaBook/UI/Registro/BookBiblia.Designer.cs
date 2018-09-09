@@ -40,6 +40,8 @@
             this.TipocomboBox = new System.Windows.Forms.ComboBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.IdnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.Nuevobutton = new System.Windows.Forms.Button();
+            this.Buscarbutton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IdnumericUpDown)).BeginInit();
             this.SuspendLayout();
@@ -133,11 +135,33 @@
             this.IdnumericUpDown.Size = new System.Drawing.Size(50, 20);
             this.IdnumericUpDown.TabIndex = 12;
             // 
+            // Nuevobutton
+            // 
+            this.Nuevobutton.Location = new System.Drawing.Point(75, 182);
+            this.Nuevobutton.Name = "Nuevobutton";
+            this.Nuevobutton.Size = new System.Drawing.Size(75, 23);
+            this.Nuevobutton.TabIndex = 13;
+            this.Nuevobutton.Text = "Nuevo";
+            this.Nuevobutton.UseVisualStyleBackColor = true;
+            this.Nuevobutton.Click += new System.EventHandler(this.Nuevobutton_Click);
+            // 
+            // Buscarbutton
+            // 
+            this.Buscarbutton.Location = new System.Drawing.Point(140, 24);
+            this.Buscarbutton.Name = "Buscarbutton";
+            this.Buscarbutton.Size = new System.Drawing.Size(75, 23);
+            this.Buscarbutton.TabIndex = 14;
+            this.Buscarbutton.Text = "Buscar";
+            this.Buscarbutton.UseVisualStyleBackColor = true;
+            this.Buscarbutton.Click += new System.EventHandler(this.Buscarbutton_Click);
+            // 
             // BookBiblia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(233, 267);
+            this.Controls.Add(this.Buscarbutton);
+            this.Controls.Add(this.Nuevobutton);
             this.Controls.Add(this.IdnumericUpDown);
             this.Controls.Add(this.TipocomboBox);
             this.Controls.Add(this.DescripciontextBox);
@@ -170,6 +194,8 @@
         private System.Windows.Forms.ComboBox TipocomboBox;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.NumericUpDown IdnumericUpDown;
+        private System.Windows.Forms.Button Buscarbutton;
+        private System.Windows.Forms.Button Nuevobutton;
     }
 }
 

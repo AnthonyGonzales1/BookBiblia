@@ -52,7 +52,7 @@ namespace BibliaBook
         {
             bool paso = false;
             
-            if (error == 1 && IdnumericUpDown.Text == string.Empty)
+            if (error == 1 && IdnumericUpDown.Value == 0)
             {
                 errorProvider.SetError(IdnumericUpDown,
                    "Debe ingresar un ID");
@@ -94,7 +94,7 @@ namespace BibliaBook
 
         private void Guardarbutton_Click(object sender, EventArgs e)
         {
-            if (Validar(1))
+            if (Validar(2))
             {
                 MessageBox.Show("Llenar Campos vacios");
                 errorProvider.Clear();
@@ -108,8 +108,6 @@ namespace BibliaBook
                     if (BLL.BibliaBookBLL.Guardar(book))
                     {
                         MessageBox.Show("Guardado!", "Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        IdnumericUpDown.Value = 0;
-                        LlenarComboBox();
                         Clear();
                     }
                     else
@@ -127,7 +125,7 @@ namespace BibliaBook
                         if (BLL.BibliaBookBLL.Modificar(LlenaClase()))
                         {
                             MessageBox.Show("Modificado!!");
-                            
+                            Clear();
                         }
                         else
                         {
@@ -149,13 +147,44 @@ namespace BibliaBook
             if (BLL.BibliaBookBLL.Eliminar(Convert.ToInt32(IdnumericUpDown.Value)))
             {
                 MessageBox.Show("Eliminado!!");
-                IdnumericUpDown.Value = 0;
-                LlenarComboBox();
+                Clear();
             }
             else
             {
                 MessageBox.Show("No se pudo eliminar!!");
             }
         }
+
+        private void Buscarbutton_Click(object sender, EventArgs e)
+        {
+            if (Validar(1))
+            {
+                MessageBox.Show("Favor de llenar la casilla para poder Buscar");
+            }
+            else
+            {
+                int id = Convert.ToInt32(IdnumericUpDown.Value);
+                book = BLL.BibliaBookBLL.Buscar(id);
+
+                if (book != null)
+                {
+                    IdnumericUpDown.Value = book.BibliaId;
+                    DescripciontextBox.Text = book.Descripcion.ToString();
+                    SiglastextBox.Text = book.Siglas.ToString();
+                    TipocomboBox.Text = book.TipoId.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("No Fue Encontrado!", "Fallido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                errorProvider.Clear();
+            }
+        }
+
+        private void Nuevobutton_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
     }
 }
+
