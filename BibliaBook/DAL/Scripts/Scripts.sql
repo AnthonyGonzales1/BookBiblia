@@ -1,0 +1,2 @@
+Create database BibliaBookDb
+go
